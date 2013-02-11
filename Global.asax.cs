@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using LiveDashboard.Web.Connections;
 
 namespace LiveDashboard.Web
 {

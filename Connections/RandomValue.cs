@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 
-namespace LiveDashboard.Web
+namespace LiveDashboard.Web.Connections
 {
     public class RandomValue : PersistentConnection
     {
