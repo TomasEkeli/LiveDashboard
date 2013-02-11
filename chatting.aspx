@@ -11,7 +11,7 @@
     <script src="Scripts/jquery.signalR-1.0.0-rc2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
-            var connection = $.connection('/MyConnection');
+            var connection = $.connection('/Chatroom');
 
             connection.received(function(data) {
                 $('#messages').append('<li>' + data + '</li>');

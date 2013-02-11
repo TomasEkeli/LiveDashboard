@@ -26,7 +26,8 @@ namespace LiveDashboard.Web
         static void RegisterRoutes()
         {
             // Register the default hubs route: ~/signalr
-            RouteTable.Routes.MapConnection<MyConnection>("MyConnection", "/MyConnection");
+            RouteTable.Routes.MapConnection<Chatroom>("Chatroom", "/Chatroom");
+            RouteTable.Routes.MapConnection<RandomValue>("Random", "/Random");
             RouteTable.Routes.MapHubs();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

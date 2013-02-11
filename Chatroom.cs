@@ -3,7 +3,7 @@ using Microsoft.AspNet.SignalR;
 
 namespace LiveDashboard.Web
 {
-    public class MyConnection : PersistentConnection
+    public class Chatroom : PersistentConnection
     {
         protected override Task OnConnected(IRequest request, string connectionId)
         {
