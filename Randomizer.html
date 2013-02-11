@@ -3,7 +3,7 @@
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Gauges test</title>
     <script src="http://code.jquery.com/jquery-1.7.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery.signalR-1.0.0-rc2.min.js" type="text/javascript"></script>
     <script src="Scripts/raphael.2.1.0.min.js" type="text/javascript"></script>
@@ -16,27 +16,43 @@
             
         };
     </script>
+    <link rel="stylesheet" href="/Style/dashboard.css"/>
 </head>
     <body>
-        <div id="gauge" class="200x160px"></div>
+        <div id="room1" class="smallGauge"></div>
+        <div id="room2" class="smallGauge"></div>
         
         <script type="text/javascript">
             $(function () {
-                var myGauge = new JustGage({
-                    id: 'gauge',
+                var room1Gauge = new JustGage({
+                    id: 'room1',
                     value: 50,
                     min: 0,
                     max: 100,
-                    title: 'temperature'
+                    title: 'Room 1'
                 });
 
-                var connection = $.connection('/Random');
-
-                connection.received(function (data) {
-                    myGauge.refresh(data);
+                var room2Gauge = new JustGage({
+                    id: 'room2',
+                    value: 50,
+                    min: 0,
+                    max: 100,
+                    title: 'Room 2'
                 });
+
+                var connectionToRoom1 = $.connection('/Random');
+                //var connectionToRoom2 = $.connection('/Random');
+
+                connectionToRoom1.received(function (data) {
+                    room1Gauge.refresh(data);
+                });
+
+                //connectionToRoom2.received(function(data) {
+                //    room2Gauge.refresh(data);
+                //});
                 
-                connection.start();
+                connectionToRoom1.start();
+                //connectionToRoom2.start();
             });
             
         </script>
