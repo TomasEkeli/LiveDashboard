@@ -9,37 +9,36 @@
     <script src="Scripts/raphael.2.1.0.min.js" type="text/javascript"></script>
     <script src="Scripts/justgage.1.0.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(function () {
-            var connection = $.connection('/Random');
-
-            connection.received(function (data) {
-                $('#values').append('<li>' + data + '</li>');
-            });
-
-
-            connection.start();
-        });
+        
     </script>
 </head>
     <body>
-        <div id="chart">
-            
-        </div>
-        <div>
-            <ul id="values">
-            </ul>
-        </div>
         <div id="gauge" class="200x160px"></div>
-       <script type="text/javascript">
-            var g = new JustGage({
-                id: 'gauge',
-                value: 67,
-                min: 0,
-                max: 100,
-                title: 'temperature'
-            });
-        </script>
         
+        <script type="text/javascript">
+            $(function () {
+                var myGauge = new JustGage({
+                    id: 'gauge',
+                    value: 50,
+                    min: 0,
+                    max: 100,
+                    title: 'temperature'
+                });
+
+                var connection = $.connection('/Random');
+
+                connection.received(function (data) {
+                    
+                    JustGage({
+                        id: 'gauge',
+                        value: data
+                    });
+                });
+                
+                connection.start();
+            });
+            
+        </script>
     </body>
     
     
